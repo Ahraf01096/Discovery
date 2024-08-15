@@ -254,7 +254,7 @@ class _FeedItemState extends State<FeedItem> {
           ),
         ),
         style: ElevatedButton.styleFrom(
-            primary: Colors.transparent,
+            backgroundColor: Colors.transparent,
             shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(22),side: BorderSide(color: Colors.white))
         ),
       ),

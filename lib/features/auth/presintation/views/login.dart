@@ -1,13 +1,14 @@
+import 'package:discovery/features/auth/presintation/views/register.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
-import 'package:discovery/auth/register/register.dart';
 import 'package:discovery/components/password_text_field.dart';
 import 'package:discovery/components/text_form_builder.dart';
 import 'package:discovery/utils/validation.dart';
-import 'package:discovery/view_models/auth/login_view_model.dart';
+import 'package:discovery/features/auth/data/models/login_view_model.dart';
 import 'package:discovery/widgets/indicators.dart';
+
 
 class Login extends StatefulWidget {
   @override

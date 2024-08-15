@@ -3,7 +3,6 @@ import 'package:discovery/components/life_cycle_event_handler.dart';
 import 'package:discovery/discovery%20chat/firebase_provider.dart';
 import 'package:discovery/screens/mainscreen.dart';
 import 'package:discovery/services/user_service.dart';
-import 'package:discovery/splash/splash.dart';
 import 'package:discovery/utils/constants.dart';
 import 'package:discovery/utils/providers.dart';
 import 'package:discovery/view_models/theme/theme_view_model.dart';
@@ -13,6 +12,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import 'features/splash/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

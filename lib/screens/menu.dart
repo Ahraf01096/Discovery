@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:discovery/models/user.dart';
 import 'package:discovery/pages/home.dart';
 import 'package:discovery/screens/favourite_screen.dart';
-import 'package:discovery/splash/splash.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/widgets/indicators.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../discovery chat/chats.dart';
+import '../features/splash/splash.dart';
 import 'group.dart';
 import 'mytrip.dart';
 

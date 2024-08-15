@@ -1,10 +1,12 @@
-import 'package:discovery/auth/register/verfiy.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:discovery/auth/register/profile_pic.dart';
+
 import 'package:discovery/services/auth_service.dart';
+
+import '../../presintation/views/widgets/verfiy.dart';
 
 class RegisterViewModel extends ChangeNotifier {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();

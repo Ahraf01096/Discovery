@@ -1,7 +1,7 @@
+import 'package:discovery/features/auth/presintation/views/login.dart';
+import 'package:discovery/features/auth/presintation/views/register.dart';
 import 'package:flutter/material.dart';
-import 'package:discovery/auth/login/login.dart';
 
-import '../auth/register/register.dart';
 
 class Landing extends StatefulWidget {
   @override
