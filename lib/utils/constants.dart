@@ -6,8 +6,13 @@ class Constants {
   static String appName = "Discovery";
 
   //Colors for theme
-  static Color lightPrimary = Colors.grey.shade200;
-  static Color darkPrimary = Colors.grey;
+  static Color kPrimaryColor = Color(0xff205065);
+  static Color kSecondColor = Color(0xff3e97bd);
+
+
+
+
+
 
   static Color lightAccent = Color(0xff3e97bd);
 
@@ -17,7 +22,7 @@ class Constants {
   static Color darkBG = Colors.grey;
 
   static ThemeData lightTheme = ThemeData(
-    primaryColor: lightPrimary,
+    primaryColor: Colors.black,
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: lightAccent,
     ),
@@ -47,7 +52,7 @@ class Constants {
 
   static ThemeData darkTheme = ThemeData(
     iconTheme: const IconThemeData(color: Colors.white),
-    primaryColor: darkPrimary,
+    primaryColor: Colors.white,
     scaffoldBackgroundColor: darkBG,
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: darkAccent,
