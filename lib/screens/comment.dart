@@ -321,7 +321,7 @@ class _CommentsState extends State<Comments> {
                                   fontSize: 15.0,
                                   color: Theme.of(context)
                                       .textTheme
-                                      .headline6!
+                                      .titleLarge!
                                       .color,
                                 ),
                                 decoration: InputDecoration(

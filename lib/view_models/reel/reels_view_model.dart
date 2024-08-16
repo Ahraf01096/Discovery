@@ -94,7 +94,7 @@ class ReelsViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
     try {
-      PickedFile? pickedFile = await picker.getVideo(
+      XFile? pickedFile = await picker.pickVideo(
         source: camera ? ImageSource.camera : ImageSource.gallery,
       );
       videoUrl = File(pickedFile!.path);
