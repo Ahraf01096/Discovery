@@ -114,101 +114,97 @@ class _FeedItemState extends State<FeedItem> {
               UserModel user =
                   UserModel.fromJson(snap.data() as Map<String, dynamic>);
               return Stack(children: [
-                Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Column(
-
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          SizedBox(),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Column(
                               children: [
-                                Column(
-                                  children: [
-                                    Container(
-                                      width: 400,
-                                      child: GestureDetector(
-                                        onTap: () => showProfile(context,
-                                            profileId: user.id!),
-                                        child: Row(
-                                          children: [
-                                            user.photoUrl!.isEmpty
-                                                ? CircleAvatar(
-                                                    child: Center(
-                                                      child: Text(
-                                                        '${user.username![0].toUpperCase()}',
-                                                        style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 15.0,
-                                                          fontWeight:
-                                                              FontWeight.w900,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    radius: 20,
-                                                  )
-                                                : CircleAvatar(
-                                                    radius: 20.0,
-                                                    backgroundImage:
-                                                        CachedNetworkImageProvider(
-                                                      '${user.photoUrl}',
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: GestureDetector(
+                                    onTap: () => showProfile(context,
+                                        profileId: user.id!),
+                                    child: Row(
+                                      children: [
+                                        user.photoUrl!.isEmpty
+                                            ? CircleAvatar(
+                                                child: Center(
+                                                  child: Text(
+                                                    '${user.username![0].toUpperCase()}',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.w900,
                                                     ),
                                                   ),
-                                            SizedBox(width: 10),
-                                            Text(
-                                              '${widget.reel!.username! ?? ""}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
+                                                ),
+                                                radius: 20,
+                                              )
+                                            : CircleAvatar(
+                                                radius: 20.0,
+                                                backgroundImage:
+                                                    CachedNetworkImageProvider(
+                                                  '${user.photoUrl}',
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(width: 10),
-                                            buildFollowButton(widget.profileId),
-                                          ],
+                                        SizedBox(width: 10),
+                                        Text(
+                                          '${widget.reel!.username! ?? ""}',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
+                                        SizedBox(width: 10),
+                                        buildFollowButton(widget.profileId),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 400,
-                                      child: Text(
-                                        '"${widget.reel!.description! ?? ""}"',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontFamily: 'Roboto',
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white,
-                                          overflow: TextOverflow.visible,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 400,
-                                      child: Text(
-                                        '${widget.reel!.location! ?? 'Discovery'}',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontFamily: 'Roboto',
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white,
-                                        ),
-                                        overflow: TextOverflow.visible,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ])
-                        ]))
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: 300,
+                                  child: Text(
+                                    '"${widget.reel!.description! ?? ""}"',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                      overflow: TextOverflow.visible,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: 300,
+                                  child: Text(
+                                    '${widget.reel!.location! ?? 'Discovery'}',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                    ),
+                                    overflow: TextOverflow.visible,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                              ],
+                            ),
+                          ])
+                    ])
               ]);
             } else {
               return Container();

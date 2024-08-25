@@ -83,7 +83,7 @@ class _FeedsState extends State<Feeds> with AutomaticKeepAliveClientMixin {
                             width: 329,
                             height: 250,
                             child: Padding(
-                              padding: EdgeInsets.only(right: 32,left: 32 , bottom: 20),
+                              padding: EdgeInsets.symmetric(horizontal: 16,vertical: 5),
                               child: UserPost(post: posts),
                             ),
                           );

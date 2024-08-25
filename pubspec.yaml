@@ -59,6 +59,7 @@ dependencies:
   progress_indicator: ^0.2.2
   firebase_messaging: ^15.0.4
   flutter_local_notifications: ^17.2.2
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -84,4 +85,7 @@ flutter:
   assets:
     - images/
     - images/splash/
+    - images/categories/
+    - images/recommended/
+    - images/activities/
 

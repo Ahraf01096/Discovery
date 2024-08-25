@@ -1,5 +1,5 @@
 import 'package:animations/animations.dart';
-import 'package:discovery/pages/home.dart';
+import 'package:discovery/features/home/presintation/views/home.dart';
 import 'package:discovery/pages/reels.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -68,9 +68,9 @@ class _TabScreenState extends State<TabScreen> {
         },
         child: pages[_page]['page'],
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: Container(
+        height: 80,
         child: Row(
-          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -79,7 +79,7 @@ class _TabScreenState extends State<TabScreen> {
               item['index'] == 2
                   ? buildFab()
                   : Padding(
-                padding: const EdgeInsets.only(top: 5.0),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: IconButton(
                   icon: Icon(
                     item['icon'],
@@ -96,7 +96,7 @@ class _TabScreenState extends State<TabScreen> {
             SizedBox(width: 5),
           ],
         ),
-      ),
+      )
     );
   }
 

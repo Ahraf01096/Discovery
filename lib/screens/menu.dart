@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:discovery/models/user.dart';
-import 'package:discovery/pages/home.dart';
+import 'package:discovery/features/home/presintation/views/home.dart';
 import 'package:discovery/screens/favourite_screen.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/widgets/indicators.dart';

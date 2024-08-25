@@ -1,4 +1,5 @@
 
+import 'package:device_preview/device_preview.dart';
 import 'package:discovery/components/life_cycle_event_handler.dart';
 import 'package:discovery/discovery%20chat/firebase_provider.dart';
 import 'package:discovery/screens/mainscreen.dart';
@@ -32,7 +33,11 @@ void main() async {
   } else {
     await Firebase.initializeApp();
   }
-  runApp(MyApp());
+  runApp(
+  DevicePreview(
+    enabled: true,
+    builder: (context) => MyApp(), // Wrap your app
+  ));
 }
 
 class MyApp extends StatefulWidget {

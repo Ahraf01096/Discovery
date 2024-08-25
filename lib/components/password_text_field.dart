@@ -1,3 +1,4 @@
+import 'package:discovery/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:discovery/components/custom_card.dart';
@@ -57,73 +58,66 @@ class _PasswordFormBuilderState extends State<PasswordFormBuilder> {
             },
             borderRadius: BorderRadius.circular(40.0),
             child: Container(
-              child: Theme(
-                data: ThemeData(
-                  primaryColor: Theme.of(context).colorScheme.secondary,
-                  colorScheme: ColorScheme.fromSwatch().copyWith(
-                      secondary: Theme.of(context).colorScheme.secondary),
+              child: TextFormField(
+                cursorColor: Constants.kSecondColor,
+                initialValue: widget.initialValue,
+                enabled: widget.enabled,
+                onChanged: (val) {
+                  error = widget.validateFunction!(val);
+                  setState(() {});
+                  widget.onSaved!(val);
+                },
+                style: TextStyle(
+                  fontSize: 15.0,
                 ),
-                child: TextFormField(
-                  cursorColor: Theme.of(context).colorScheme.secondary,
-                  initialValue: widget.initialValue,
-                  enabled: widget.enabled,
-                  onChanged: (val) {
-                    error = widget.validateFunction!(val);
-                    setState(() {});
-                    widget.onSaved!(val);
-                  },
-                  style: TextStyle(
-                    fontSize: 15.0,
+                key: widget.key,
+                controller: widget.controller,
+                // obscureText: widget.obscureText,
+                obscureText: obscureText,
+                keyboardType: widget.textInputType,
+                validator: widget.validateFunction,
+                onSaved: (val) {
+                  error = widget.validateFunction!(val);
+                  setState(() {});
+                  widget.onSaved!(val!);
+                },
+                textInputAction: widget.textInputAction,
+                focusNode: widget.focusNode,
+                onFieldSubmitted: (String term) {
+                  if (widget.nextFocusNode != null) {
+                    widget.focusNode!.unfocus();
+                    FocusScope.of(context).requestFocus(widget.nextFocusNode);
+                  } else {
+                    widget.submitAction!();
+                  }
+                },
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    widget.prefix,
+                    size: 15.0,
+                    color: Constants.kSecondColor,
                   ),
-                  key: widget.key,
-                  controller: widget.controller,
-                  // obscureText: widget.obscureText,
-                  obscureText: obscureText,
-                  keyboardType: widget.textInputType,
-                  validator: widget.validateFunction,
-                  onSaved: (val) {
-                    error = widget.validateFunction!(val);
-                    setState(() {});
-                    widget.onSaved!(val!);
-                  },
-                  textInputAction: widget.textInputAction,
-                  focusNode: widget.focusNode,
-                  onFieldSubmitted: (String term) {
-                    if (widget.nextFocusNode != null) {
-                      widget.focusNode!.unfocus();
-                      FocusScope.of(context).requestFocus(widget.nextFocusNode);
-                    } else {
-                      widget.submitAction!();
-                    }
-                  },
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      widget.prefix,
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() => obscureText = !obscureText);
+                    },
+                    child: Icon(
+                      obscureText ? widget.suffix : Ionicons.eye_outline,
                       size: 15.0,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Constants.kSecondColor,
                     ),
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() => obscureText = !obscureText);
-                      },
-                      child: Icon(
-                        obscureText ? widget.suffix : Ionicons.eye_outline,
-                        size: 15.0,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                    ),
-                    // fillColor: Colors.white,
-                    filled: true,
-                    hintText: widget.hintText,
-                    hintStyle: TextStyle(
-                      color: Colors.grey[400],
-                    ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
-                    border: border(context),
-                    enabledBorder: border(context),
-                    focusedBorder: focusBorder(context),
-                    errorStyle: TextStyle(height: 0.0, fontSize: 0.0),
                   ),
+                  // fillColor: Colors.white,
+                  filled: true,
+                  hintText: widget.hintText,
+                  hintStyle: TextStyle(
+                    color: Colors.grey[400],
+                  ),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                  border: border(context),
+                  enabledBorder: border(context),
+                  focusedBorder: focusBorder(context),
+                  errorStyle: TextStyle(height: 0.0, fontSize: 0.0),
                 ),
               ),
             ),
@@ -154,18 +148,19 @@ class _PasswordFormBuilderState extends State<PasswordFormBuilder> {
       ),
       borderSide: BorderSide(
         color: Colors.white,
-        width: 0.0,
+        width: 5.0,
       ),
     );
   }
 
+
   focusBorder(BuildContext context) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.all(
-        Radius.circular(30.0),
+        Radius.circular(30.0,)
       ),
       borderSide: BorderSide(
-        color: Theme.of(context).colorScheme.secondary,
+        color: Constants.kSecondColor,
         width: 1.0,
       ),
     );

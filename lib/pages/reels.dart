@@ -50,7 +50,7 @@ class _ReelsState extends State<Reels> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: FutureBuilder(
         future:

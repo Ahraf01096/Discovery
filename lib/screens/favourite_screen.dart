@@ -2,6 +2,7 @@ import 'package:discovery/view_models/favourite/favourite_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../features/home/data/models/recommended_model.dart';
 import '../screens/menu.dart';
 
 class WishlistScreen extends StatefulWidget {
@@ -37,6 +38,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   onTap: () {
                     Navigator.pop(context,
                         MaterialPageRoute(builder: (context) => menu()));
+
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
