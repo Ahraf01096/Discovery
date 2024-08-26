@@ -1,3 +1,4 @@
+import 'package:discovery/utils/styles.dart';
 import 'package:discovery/view_models/favourite/favourite_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +39,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   onTap: () {
                     Navigator.pop(context,
                         MaterialPageRoute(builder: (context) => menu()));
-
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
@@ -49,19 +49,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
               SizedBox(
                 width: 12,
               ),
-              Row(
-                children: [
-                  Text("My Favourites",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                        color: Color.fromRGBO(31, 80, 100, 1),
-                        fontFamily: 'Roboto',
-                        height: 1,
-                      )),
-                ],
-              ),
+              Text("My Favourites",
+                  textAlign: TextAlign.start,
+                  style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w500)),
             ],
           )),
       body: Consumer<WishlistProvider>(

@@ -13,12 +13,12 @@ import 'package:discovery/widgets/custom_button.dart';
 import '../../../../utils/styles.dart';
 import 'login.dart';
 
-class Register extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterScreenState extends State<RegisterScreen> {
   Country selectedCountry = Country(
       phoneCode: "20",
       countryCode: "EG",

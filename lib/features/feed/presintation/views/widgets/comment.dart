@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:discovery/features/feed/presintation/views/feeds.dart';
 import 'package:discovery/features/profile/presintation/views/profile.dart';
+import 'package:discovery/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -45,14 +46,12 @@ class _CommentsState extends State<Comments> {
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              buildFullPost(),
               Flexible(
                 child: ListView(
                   children: [
-                    buildFullPost(),
-                    SizedBox(
-                      height: 5,
-                    ),
                     StreamBuilder(
                       stream: usersRef.doc(widget.post!.ownerId).snapshots(),
                       builder:
@@ -76,7 +75,7 @@ class _CommentsState extends State<Comments> {
                                     showProfile(context, profileId: user.id!),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 30.0, right: 32),
+                                      left: 16.0, right: 16),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -95,17 +94,12 @@ class _CommentsState extends State<Comments> {
                                                   child: Center(
                                                     child: Text(
                                                       '${user.username![0].toUpperCase()}',
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 15.0,
-                                                        fontWeight:
-                                                            FontWeight.w900,
-                                                      ),
+                                                      style: Styles.textStyle18,
                                                     ),
                                                   ),
                                                 )
                                               : CircleAvatar(
-                                                  radius: 20.0,
+                                                  radius: 22.0,
                                                   backgroundImage:
                                                       CachedNetworkImageProvider(
                                                     '${user.photoUrl}',
@@ -121,11 +115,7 @@ class _CommentsState extends State<Comments> {
                                             children: [
                                               Text(
                                                 '${widget.post?.username ?? ""}',
-                                                style: TextStyle(
-                                                    color: Color(0xff205065),
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 16,
-                                                    fontFamily: 'Roboto'),
+                                                style: Styles.textStyle18,
                                                 overflow: TextOverflow.visible,
                                               ),
                                               Row(
@@ -145,13 +135,7 @@ class _CommentsState extends State<Comments> {
                                                     timeago.format(widget
                                                         .post!.timestamp!
                                                         .toDate()),
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF9593a8),
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        fontSize: 11,
-                                                        fontFamily: 'Roboto'),
+                                                    style: Styles.textStyle14.copyWith(color:  Color(0xFF9593a8),fontSize: 13),
                                                   ),
                                                 ],
                                               ),
@@ -171,10 +155,10 @@ class _CommentsState extends State<Comments> {
                       },
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 32),
+                      padding: const EdgeInsets.only(left: 16),
                       child: Text(
                         'About',
                         style: TextStyle(
@@ -185,7 +169,7 @@ class _CommentsState extends State<Comments> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 32, right: 32),
+                      padding: const EdgeInsets.only(left: 16, right: 16),
                       child: ExpandableText(
                         text: widget.post!.description!,
                         maxLines: 20,
@@ -221,7 +205,7 @@ class _CommentsState extends State<Comments> {
                       endIndent: 20,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 32),
+                      padding: const EdgeInsets.only(left: 16),
                       child: Text(
                         'How To Get There',
                         style: TextStyle(
@@ -236,7 +220,7 @@ class _CommentsState extends State<Comments> {
                       height: 5,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 32, right: 32),
+                      padding: const EdgeInsets.only(left: 16, right: 16),
                       child: ExpandableText(
                         text: widget.post!.howToGetThere!,
                         maxLines: 20,
@@ -272,7 +256,7 @@ class _CommentsState extends State<Comments> {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 32),
+                      padding: const EdgeInsets.only(left: 16),
                       child: Text(
                         'Comments',
                         style: TextStyle(
@@ -294,71 +278,57 @@ class _CommentsState extends State<Comments> {
               Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                    ),
                     constraints: BoxConstraints(
                       maxHeight: 190.0,
                     ),
                     child: Container(
                       width: 329,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
+                          borderRadius: BorderRadius.circular(30),
                           color: Colors.white),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Flexible(
-                            child: ListTile(
-                              contentPadding: EdgeInsets.all(0),
-                              title: TextField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                controller: commentsTEC,
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .color,
-                                ),
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.only(left: 10),
-                                  border: UnderlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  hintText: "write your comment...",
-                                  hintStyle: TextStyle(
-                                    fontSize: 15.0,
-                                    color: Color(0xFF9593a8),
-                                  ),
-                                ),
-                                maxLines: null,
-                              ),
-                              trailing: GestureDetector(
-                                onTap: () async {
-                                  await services.uploadComment(
-                                    currentUserId(),
-                                    commentsTEC.text,
-                                    widget.post!.postId!,
-                                    widget.post!.ownerId!,
-                                    widget.post!.mediaUrl!,
-                                  );
-                                  commentsTEC.clear();
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 10.0),
-                                  child: Icon(
-                                    Icons.send,
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                  ),
-                                ),
-                              ),
+                      child: ListTile(
+                        title: TextField(
+                          textCapitalization:
+                              TextCapitalization.sentences,
+                          controller: commentsTEC,
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .color,
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            border: UnderlineInputBorder(
+                                borderSide: BorderSide.none),
+                            hintText: "write your comment...",
+                            hintStyle: Styles.textStyle16.copyWith(color: Color(0xFF9593a8),),
+                          ),
+                          maxLines: null,
+                        ),
+                        trailing: GestureDetector(
+                          onTap: () async {
+                            await services.uploadComment(
+                              currentUserId(),
+                              commentsTEC.text,
+                              widget.post!.postId!,
+                              widget.post!.ownerId!,
+                              widget.post!.mediaUrl!,
+                            );
+                            commentsTEC.clear();
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: Icon(
+                              Icons.send,
+                              color:
+                                  Theme.of(context).colorScheme.secondary,
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
@@ -376,10 +346,10 @@ class _CommentsState extends State<Comments> {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+          decoration: BoxDecoration(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30))),
           height: 374.0,
           width: MediaQuery.of(context).size.width,
-          child: cachedNetworkImage(widget.post!.mediaUrl!),
+          child: cachedNetworkImage(widget.post!.mediaUrl!)
         ),
         Padding(
           padding: const EdgeInsets.only(right: 20, left: 20),
@@ -395,7 +365,7 @@ class _CommentsState extends State<Comments> {
                           MaterialPageRoute(builder: (context) => Feeds()));
                     },
                     icon: CircleAvatar(
-                      radius: 15.0,
+                      radius: 18.0,
                       backgroundColor: Colors.white24,
                       child: Icon(
                         Icons.arrow_back_ios_new_rounded,
@@ -405,74 +375,69 @@ class _CommentsState extends State<Comments> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 250.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          widget.post!.caption!,
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white),
-                          maxLines: 1,
-                        ),
-                        RatingBarIndicator(
-                          rating: widget.post!.rating!,
-                          unratedColor: Colors.grey,
-                          itemBuilder: (context, index) => Icon(
-                            Icons.star,
-                            color: Colors.amber,
+                child: Container(
+                  color: Colors.black12,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            widget.post!.caption!,
+                            style: Styles.textStyle18.copyWith(color: Colors.white),
+                            maxLines: 1,
                           ),
-                          itemCount: 5,
-                          itemSize: 25,
-                          direction: Axis.horizontal,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.location_on_outlined,
-                              color: Theme.of(context).colorScheme.secondary,
-                              size: 15,
+                          RatingBarIndicator(
+                            rating: widget.post!.rating!,
+                            unratedColor: Colors.grey,
+                            itemBuilder: (context, index) => Icon(
+                              Icons.star,
+                              color: Colors.amber,
                             ),
-                            Text(
-                              '${widget.post!.location ?? 'Discovery'}',
-                              style: TextStyle(
-                                fontSize: 12.0,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Roboto',
-                                color: Theme.of(context).colorScheme.secondary,
+                            itemCount: 5,
+                            itemSize: 25,
+                            direction: Axis.horizontal,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.location_on_outlined,
+                                color: Colors.white,
+                                size: 15,
                               ),
-                              overflow: TextOverflow.visible,
-                            ),
-                          ],
-                        ),
-                        Text(
-                          '(${widget.post!.rating ?? '0'})',
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Roboto',
-                            color: Colors.amber,
+                              Text(
+                                '${widget.post!.location ?? 'Discovery'}',
+                                style: Styles.textStyle14.copyWith(color: Colors.white),
+                                overflow: TextOverflow.visible,
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          Text(
+                            '(${widget.post!.rating ?? '0'})',
+                            maxLines: 2,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto',
+                              color: Colors.amber,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -485,8 +450,8 @@ class _CommentsState extends State<Comments> {
   buildComments() {
     return Padding(
       padding: const EdgeInsets.only(
-        right: 32,
-        left: 32,
+        right: 16,
+        left: 16,
       ),
       child: Container(
         width: 329,
@@ -523,7 +488,7 @@ class _CommentsState extends State<Comments> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     comments.comment!,
                     style: TextStyle(

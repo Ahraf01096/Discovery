@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: TextButton.styleFrom(
             backgroundColor: backgroundColor,
-            shape: RoundedRectangleBorder(side: borderside?? BorderSide(color:Colors.white ),
+            shape: RoundedRectangleBorder(side: borderside?? BorderSide(color: Colors.transparent),
                 borderRadius: borderRadius ?? BorderRadius.circular(30)),),
         child: Text(
           text,

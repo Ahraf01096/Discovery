@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:discovery/utils/constants.dart';
+import 'package:discovery/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -72,7 +74,8 @@ class _ProfilePictureState extends State<ProfilePicture> {
                                               )
                                             : CircleAvatar(
                                                 backgroundImage: FileImage(
-                                                    viewModel.mediaUrl! as File),
+                                                    viewModel.mediaUrl!
+                                                        as File),
                                                 radius: 75,
                                               ),
                                   ),
@@ -88,14 +91,14 @@ class _ProfilePictureState extends State<ProfilePicture> {
                                 Text(
                                   'Add Profile Photo',
                                   style: TextStyle(
-                                    fontSize: 29.0,
+                                    fontSize: 28.0,
                                     fontWeight: FontWeight.w600,
                                     fontFamily: 'Roboto',
                                     color: Color(0xff27678a),
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 16.0,
+                                  height: 10.0,
                                 ),
                                 Text(
                                   'Add a profile photo so that your friends know \n                                  '
@@ -110,43 +113,26 @@ class _ProfilePictureState extends State<ProfilePicture> {
                                 SizedBox(
                                   height: 40.0,
                                 ),
-                                Container(
-                                  width: 329,
-                                  height: 46,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff3e97bd),
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                  child: MaterialButton(
-                                    onPressed: () =>
-                                        showImageChoices(context, viewModel),
-
-                                    child: Text(
-                                      'Add a Photo',
-                                      style:
-                                          TextStyle(color: Color(0xffffffff)),
-                                    ),
-                                  ),
+                                CustomButton(
+                                  height: 50,
+                                  width: 220,
+                                  backgroundColor: Constants.kSecondColor,
+                                  textColor: Colors.white,
+                                  text: 'Add Your Photo',
+                                  onPressed: () =>
+                                      showImageChoices(context, viewModel),
                                 ),
                                 SizedBox(
                                   height: 16.0,
                                 ),
-                                Container(
-                                  width: 329,
-                                  height: 46,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                  child: MaterialButton(
-                                    onPressed: () => viewModel.uploadProfilePicture(context),
-                                    child: Text(
-                                      'Finish',
-                                      style:
-
-                                          TextStyle(color: Color(0xff3e97bd),fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
+                                CustomButton(
+                                  height: 50,
+                                  width: 220,
+                                  backgroundColor: Colors.white,
+                                  textColor: Constants.kSecondColor,
+                                  text: 'Finish',
+                                  onPressed: () =>
+                                      viewModel.uploadProfilePicture(context),
                                 ),
                               ],
                             ),

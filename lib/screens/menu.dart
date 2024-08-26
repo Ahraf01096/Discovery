@@ -4,7 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:discovery/features/home/presintation/views/home.dart';
 import 'package:discovery/screens/favourite_screen.dart';
+import 'package:discovery/utils/constants.dart';
 import 'package:discovery/utils/firebase.dart';
+import 'package:discovery/utils/styles.dart';
+import 'package:discovery/widgets/custom_button.dart';
 import 'package:discovery/widgets/indicators.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,12 +70,10 @@ class _menuState extends State<menu> {
                     ),
                     currentAccountPicture: CircleAvatar(
                       radius: 40.0,
-                      backgroundImage:
-                      CachedNetworkImageProvider(
+                      backgroundImage: CachedNetworkImageProvider(
                         '${user.photoUrl}',
                       ),
                     ),
-
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       image: DecorationImage(
@@ -80,25 +81,24 @@ class _menuState extends State<menu> {
                           image: AssetImage('images/covermenu.jpg')),
                     ),
                   );
-                }return circularProgress(context);
+                }
+                return circularProgress(context);
               }),
           ListTile(
             leading: Icon(
               Icons.favorite,
               color: Color(0xff205065),
             ),
-            title:
-                Text('My Favorites', style:
-                TextStyle(
-                    color: Color(0xff205065),
-                    fontFamily: 'Roboto',
+            title: Text('My Favorites',
+                style: TextStyle(
+                  color: Color(0xff205065),
+                  fontFamily: 'Roboto',
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
-                )
-                ),
+                )),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => WishlistScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => WishlistScreen()));
             },
           ),
           ListTile(
@@ -106,21 +106,20 @@ class _menuState extends State<menu> {
               Icons.directions_bus_outlined,
               color: Color(0xff205065),
             ),
-            title: Text(
-              'My Trip',
-              style: TextStyle(
-                color: Color(0xff205065),
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              )
-            ),
+            title: Text('My Trip',
+                style: TextStyle(
+                  color: Color(0xff205065),
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                )),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => mytrip(
-                userId: widget.profileId,
-              )
-              ),
+                context,
+                MaterialPageRoute(
+                    builder: (context) => mytrip(
+                          userId: widget.profileId,
+                        )),
               );
             },
           ),
@@ -130,15 +129,13 @@ class _menuState extends State<menu> {
               Icons.description,
               color: Color(0xff205065),
             ),
-            title: Text(
-              'Policies',
-              style: TextStyle(
-                color: Color(0xff205065),
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              )
-            ),
+            title: Text('Policies',
+                style: TextStyle(
+                  color: Color(0xff205065),
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                )),
             onTap: () {
               showDialog(
                   context: context,
@@ -201,20 +198,17 @@ class _menuState extends State<menu> {
               Icons.chat_outlined,
               color: Color(0xff205065),
             ),
-            title: Text(
-                'Chat',
+            title: Text('Chat',
                 style: TextStyle(
                   color: Color(0xff205065),
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
-                )
-            ),
+                )),
             onTap: () {
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ChatsScreen(
-              )
-              ),
+                context,
+                MaterialPageRoute(builder: (context) => ChatsScreen()),
               );
             },
           ),
@@ -224,34 +218,29 @@ class _menuState extends State<menu> {
               Icons.group_rounded,
               color: Color(0xff205065),
             ),
-            title: Text(
-                'Group',
+            title: Text('Group',
                 style: TextStyle(
                   color: Color(0xff205065),
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
-                )
-            ),
+                )),
             onTap: () {
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => GroupScreen(
-              )
-              ),
+                context,
+                MaterialPageRoute(builder: (context) => GroupScreen()),
               );
             },
           ),
           Divider(),
           ListTile(
-            title: Text(
-              'Logout',
-              style: TextStyle(
-                color: Color(0xff205065),
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              )
-            ),
+            title: Text('Logout',
+                style: TextStyle(
+                  color: Color(0xff205065),
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                )),
             leading: Icon(
               Icons.exit_to_app,
               color: Color(0xff205065),
@@ -261,93 +250,57 @@ class _menuState extends State<menu> {
                   context: context,
                   builder: (context) {
                     return AlertDialog(
-                      icon: Container(
-                        child: Image(image: AssetImage('images/logout.jpg')),
-                        width: 91,
-                        height: 70,
-                      ),
-                      title: Text(
-                        "See You Soon",
-                        style: TextStyle(
-                          color: Color(0xff205065),
-                          fontSize: 22,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      titlePadding: EdgeInsets.only(top: 0),
-                      content: Text(
-                          'Are You Sure You Want To    '
-                          '                      Logout?',
-                          style: TextStyle(
-                            color: Color(0xFF9593a8),
-                            fontSize: 18,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w400,
-                          )),
-                      contentPadding: EdgeInsets.only(left: 65),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
                       actions: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        Column(
                           children: [
                             Container(
-                              width: 120,
-                              height: 46,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(18),
-                                  border: Border.all(
-                                    color: Color(0xff3e97bd),
-                                  )),
-                              child: MaterialButton(
-                                onPressed: () {
-                                  Navigator.pop(
-                                      context,
+                              child: Image(image: AssetImage('images/logout.jpg')),
+                              width: 90,
+                              height: 90,
+                            ),
+                            Text(
+                              "See You Soon",
+                              style: Styles.textStyle20.copyWith(color: Constants.kSecondColor),
+                            ),
+                            SizedBox(height: 10,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CustomButton(
+                                  backgroundColor: Colors.transparent,
+                                  textColor: Constants.kSecondColor,
+                                  text: 'Cancel',
+                                  onPressed: () {
+                                    Navigator.pop(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomeScreen()));
+                                  },
+                                  borderside:
+                                  BorderSide(color: Constants.kSecondColor),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                CustomButton(
+                                  backgroundColor: Constants.kSecondColor,
+                                  textColor: Colors.white,
+                                  onPressed: () async {
+                                    await firebaseAuth.signOut();
+                                    Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
-                                          builder: (context) => HomeScreen()));
-                                },
-                                child: Text(
-                                  'Cancel',
-                                  style: TextStyle(
-                                    color: Color(0xff3e97bd),
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'Roboto'
-                                  ),
+                                        builder: (_) => Splash(),
+                                      ),
+                                          (route) => false,
+                                    );
+                                  },
+                                  text:  'Confirm Logout',
+                                  borderRadius: BorderRadius.circular(16),
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Container(
-                              width: 149,
-                              height: 46,
-                              decoration: BoxDecoration(
-                                color: Color(0xff3e97bd),
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: MaterialButton(
-                                onPressed: () async {
-                                  await firebaseAuth.signOut();
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (_) => Splash(),
-                                    ),(route) => false,
-                                  );
-                                },
-                                child: Text(
-                                  'Confirm Logout',
-                                  style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500,
-                                      fontFamily: 'Roboto'
-                                  ),
-                                ),
-                              ),
+                              ],
                             ),
                           ],
                         ),

@@ -90,7 +90,7 @@ class _GroupScreenState extends State<GroupScreen> {
               ),
               Row(
                 children: [
-                  Text("Discovery Chat",
+                  Text("Discovery Group",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 22,

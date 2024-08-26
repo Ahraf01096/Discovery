@@ -66,7 +66,7 @@ class _campingState extends State<camping> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context,
-                        MaterialPageRoute(builder: (context) => TabScreen()));
+                        MaterialPageRoute(builder: (context) => NavigationScreens()));
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,

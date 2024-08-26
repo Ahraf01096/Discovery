@@ -9,8 +9,10 @@ abstract class Styles {
   static const textStyle20 = TextStyle(
       fontSize: 20, fontWeight: FontWeight.w500 , fontFamily: 'Roboto', color: Color(0xff205065),);
   static const textStyle18 = TextStyle(
-    fontSize: 18, fontFamily: 'Roboto'
-
+    fontSize: 18,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w500,
+    color: Color(0xFF205065),
   );
   static const textStyle16 = TextStyle(
     fontSize: 16,

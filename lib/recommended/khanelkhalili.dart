@@ -10,7 +10,7 @@ class _khanelkaliliState extends State<khanelkalili> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:PlaceWidget(
-          image: "images/khan.jpg",
+          image: "images/recommended/khan.jpg",
           placeName: 'Khan El Khalili',
           location: 'cairo',
           rate: '(4.9)',

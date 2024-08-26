@@ -10,7 +10,7 @@ class _beachlifeState extends State<beachlife> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PlaceWidget(
-        image: "images/beach1.jpg",
+        image: "images/recommended/beach1.jpg",
         placeName: 'Beach Life',
         location: 'south sinai',
         rate: '(4.8)',

@@ -71,7 +71,7 @@ class _templesState extends State<temples> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushAndRemoveUntil(CupertinoPageRoute(
-                        builder: (_) => TabScreen()),(route) => false,
+                        builder: (_) => NavigationScreens()),(route) => false,
                     );
                   },
                   child: Icon(

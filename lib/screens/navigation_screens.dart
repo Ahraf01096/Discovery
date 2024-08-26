@@ -9,13 +9,13 @@ import 'package:discovery/features/profile/presintation/views/profile.dart';
 import 'package:discovery/features/feed/presintation/views/feeds.dart';
 import 'package:discovery/utils/firebase.dart';
 
-class TabScreen extends StatefulWidget {
+class NavigationScreens extends StatefulWidget {
 
   @override
-  _TabScreenState createState() => _TabScreenState();
+  _NavigationScreensState createState() => _NavigationScreensState();
 }
 
-class _TabScreenState extends State<TabScreen> {
+class _NavigationScreensState extends State<NavigationScreens> {
   int _page = 0;
 
   List pages = [

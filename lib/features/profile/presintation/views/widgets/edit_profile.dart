@@ -44,7 +44,7 @@ class _EditProfileState extends State<EditProfile> {
           leading: GestureDetector(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TabScreen()));
+                  MaterialPageRoute(builder: (context) => NavigationScreens()));
             },
             child: Container(
               padding: EdgeInsets.only(left: 20),

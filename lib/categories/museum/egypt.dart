@@ -10,7 +10,7 @@ class _egyptState extends State<egypt> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:PlaceWidget(
-        image: 'images/museum.webp',
+        image: 'images/recommended/museum.webp',
         placeName:'Museum Of Egypt' ,
         location: 'Tahrir Square, Cairo',
         rate:'(4.1)' ,

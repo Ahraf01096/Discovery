@@ -28,7 +28,7 @@ class LoginOrRegister extends StatelessWidget {
               width: 140,
               textColor: Colors.white, text: 'Register',
               onPressed:(){
-                Navigator.push(context, MaterialPageRoute(builder:(context) => Register()));
+                Navigator.push(context, MaterialPageRoute(builder:(context) => RegisterScreen()));
               } ,)
           ],
         ),

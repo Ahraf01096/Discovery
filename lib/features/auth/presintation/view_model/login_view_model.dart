@@ -33,7 +33,7 @@ class LoginViewModel extends ChangeNotifier {
         print(success);
         if (success) {
           Navigator.of(context).pushAndRemoveUntil(
-              CupertinoPageRoute(builder: (_) => TabScreen()),
+              CupertinoPageRoute(builder: (_) => NavigationScreens()),
           (route) => false,);
         }
       } catch (e) {

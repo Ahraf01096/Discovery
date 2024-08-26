@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:discovery/features/search/presintation/views/search_place.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +14,16 @@ import 'package:discovery/utils/constants.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/widgets/indicators.dart';
 
-class Search extends StatefulWidget {
+import '../../../../screens/navigation_screens.dart';
+import '../../../../utils/styles.dart';
+import '../../../../widgets/custom_button.dart';
+
+class SearchUser extends StatefulWidget {
   @override
-  _SearchState createState() => _SearchState();
+  _SearchUserState createState() => _SearchUserState();
 }
 
-class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
+class _SearchUserState extends State<SearchUser> with AutomaticKeepAliveClientMixin {
   User? user;
   TextEditingController searchController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -70,15 +75,45 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          Constants.appName,
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-        centerTitle: true,
-      ),
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.grey.shade200,
+          toolbarHeight: 80,
+          elevation: 0.0,
+          title: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context,
+                        MaterialPageRoute(builder: (context) => NavigationScreens()));
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Color(0xff3e97bd),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 12,
+              ),
+              Text('Search User',
+                  textAlign: TextAlign.start,
+                  style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w500)),
+              Spacer(),
+              CustomButton(backgroundColor: Colors.white, textColor: Constants.kSecondColor, text: 'Place',onPressed: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            SearchPlace()));
+              },)
+            ],
+          )),
       body: RefreshIndicator(
         color: Theme.of(context).colorScheme.secondary,
         onRefresh: () => getUsers(),
@@ -90,6 +125,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: buildSearch(),
             ),
+            SizedBox(height: 20,),
             buildUsers(),
           ],
         ),
@@ -98,52 +134,45 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
   }
 
   buildSearch() {
-    return Row(
-      children: [
-        Container(
-          height: 30.0,
-          width: MediaQuery.of(context).size.width - 50,
-          decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0),
-            child: TextFormField(
-              controller: searchController,
-              textAlignVertical: TextAlignVertical.center,
-              maxLength: 10,
-              maxLengthEnforcement: MaxLengthEnforcement.enforced,
-              inputFormatters: [
-                LengthLimitingTextInputFormatter(20),
-              ],
-              textCapitalization: TextCapitalization.sentences,
-              onChanged: (query) {
-                search(query);
-              },
-              decoration: InputDecoration(
+    return Center(
+      child: Container(
+        width: 329,
+        height: 46,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: TextFormField(
+            style: Styles.textStyle18,
+            controller: searchController,
+            textAlignVertical: TextAlignVertical.center,
+            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(20),
+            ],
+            textCapitalization: TextCapitalization.sentences,
+            onChanged: (query) {
+              search(query);
+            },
+            decoration: InputDecoration(
                 suffixIcon: GestureDetector(
                   onTap: () {
                     searchController.clear();
                   },
                   child: Icon(
                     Ionicons.close_outline,
-                    size: 12.0,
-                    color: Theme.of(context).colorScheme.secondary,
+                    size: 17.0,
+                    color: Constants.kSecondColor,
                   ),
                 ),
-                // contentPadding: EdgeInsets.only(bottom: 10.0, left: 10.0),
-                border: InputBorder.none,
-                counterText: '',
-                hintText: 'Search...',
-                hintStyle: TextStyle(
-                  fontSize: 13.0,
-                ),
-              ),
-            ),
+                hintText: 'Search ..',
+                hintStyle: Styles.textStyle16.copyWith(color: Color(0xFF9593a8),),
+                border: InputBorder.none),
           ),
         ),
-      ],
+      ),
     );
   }
 
@@ -176,7 +205,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                   onTap: () => showProfile(context, profileId: user.id!),
                   leading: user.photoUrl!.isEmpty
                       ? CircleAvatar(
-                          radius: 20.0,
+                          radius: 22.0,
                           backgroundColor:
                               Theme.of(context).colorScheme.secondary,
                           child: Center(
@@ -191,17 +220,18 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                           ),
                         )
                       : CircleAvatar(
-                          radius: 20.0,
+                          radius: 22.0,
                           backgroundImage: CachedNetworkImageProvider(
                             '${user.photoUrl}',
                           ),
                         ),
                   title: Text(
-                    user.username!,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    user.username??'',
+                    style: Styles.textStyle18,
                   ),
                   subtitle: Text(
-                    user.email!,
+                    user.email?? '',
+                    style: Styles.textStyle14,
                   ),
                 );
               },

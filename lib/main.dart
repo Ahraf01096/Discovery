@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: ((BuildContext context, snapshot) {
                 if (snapshot.hasData) {
-                  return TabScreen();
+                  return NavigationScreens();
                 } else
                   return Splash();
               }),

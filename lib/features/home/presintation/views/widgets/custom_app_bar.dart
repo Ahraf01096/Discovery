@@ -2,7 +2,7 @@ import 'package:discovery/utils/constants.dart';
 import 'package:discovery/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../screens/searchcategory.dart';
+import '../../../../search/presintation/views/search_place.dart';
 import 'custom_icon_button.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SearchCategory()));
+                    builder: (context) => SearchPlace()));
           },),
           // CustomIconButton(
           //     icon: Icon(

@@ -178,7 +178,7 @@ class PostsViewModel extends ChangeNotifier {
             mediaUrl!, firebaseAuth.currentUser!);
         loading = false;
         Navigator.of(context)
-            .pushReplacement(CupertinoPageRoute(builder: (_) => TabScreen()));
+            .pushReplacement(CupertinoPageRoute(builder: (_) => NavigationScreens()));
         notifyListeners();
       } catch (e) {
         print(e);
@@ -200,7 +200,7 @@ class PostsViewModel extends ChangeNotifier {
             mediaUrl!, firebaseAuth.currentUser!);
         loading = false;
         Navigator.of(context)
-            .pushReplacement(CupertinoPageRoute(builder: (_) => TabScreen()));
+            .pushReplacement(CupertinoPageRoute(builder: (_) => NavigationScreens()));
         notifyListeners();
       } catch (e) {
         print(e);

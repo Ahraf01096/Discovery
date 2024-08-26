@@ -10,7 +10,7 @@ class _royalState extends State<royal> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:PlaceWidget(
-        image:"images/royal.webp",
+        image:"images/recommended/royal.webp",
         placeName: 'The Royal Museum Of Jewelry',
         location: 'Cairo',
         rate: '(4.2)',

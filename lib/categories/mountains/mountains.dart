@@ -75,7 +75,7 @@ class _mountainsState extends State<mountains> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushAndRemoveUntil(
-                      CupertinoPageRoute(builder: (_) => TabScreen()),
+                      CupertinoPageRoute(builder: (_) => NavigationScreens()),
                       (route) => false,
                     );
                   },

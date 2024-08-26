@@ -70,7 +70,7 @@ class _LoginState extends State<Login> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Register(),
+                          builder: (context) => RegisterScreen(),
                         ),
                         (route) => false);
                   },
