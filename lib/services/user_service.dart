@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:discovery/services/services.dart';
 import 'package:discovery/utils/firebase.dart';
 

@@ -1,12 +1,12 @@
 import 'package:animations/animations.dart';
 import 'package:discovery/features/home/presintation/views/home.dart';
-import 'package:discovery/pages/reels.dart';
+import 'package:discovery/features/reels/presintation/views/reels.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:discovery/components/fab_container.dart';
-import 'package:discovery/pages/profile.dart';
-import 'package:discovery/pages/feeds.dart';
+import 'package:discovery/features/profile/presintation/views/profile.dart';
+import 'package:discovery/features/feed/presintation/views/feeds.dart';
 import 'package:discovery/utils/firebase.dart';
 
 class TabScreen extends StatefulWidget {

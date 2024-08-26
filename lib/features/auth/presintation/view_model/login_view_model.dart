@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:discovery/screens/mainscreen.dart';
+import 'package:discovery/screens/navigation_screens.dart';
 import 'package:discovery/services/auth_service.dart';
 import 'package:discovery/utils/validation.dart';
 

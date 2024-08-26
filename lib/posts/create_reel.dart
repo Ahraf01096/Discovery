@@ -1,14 +1,14 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:discovery/view_models/reel/reels_view_model.dart';
+import 'package:discovery/features/reels/presintation/views_model/reels_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:discovery/components/custom_image.dart';
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/widgets/indicators.dart';
 import 'package:video_player/video_player.dart';

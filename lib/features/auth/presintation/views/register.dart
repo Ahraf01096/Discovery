@@ -6,9 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:discovery/components/password_text_field.dart';
 import 'package:discovery/components/text_form_builder.dart';
 import 'package:discovery/utils/validation.dart';
-import 'package:discovery/features/auth/data/models/register_view_model.dart';
+import 'package:discovery/features/auth/presintation/view_model/register_view_model.dart';
 import 'package:discovery/widgets/indicators.dart';
-
+import 'package:discovery/utils/constants.dart';
+import 'package:discovery/widgets/custom_button.dart';
+import '../../../../utils/styles.dart';
 import 'login.dart';
 
 class Register extends StatefulWidget {
@@ -37,49 +39,38 @@ class _RegisterState extends State<Register> {
       child: Scaffold(
         key: viewModel.scaffoldKey,
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
           children: [
             SizedBox(height: MediaQuery.of(context).size.height / 10),
-            Padding(
-              padding: const EdgeInsets.only(left: 32),
-              child: Text(
-                'Create A New Account',
-                style: TextStyle(
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Roboto',
-                  color: Color(0xff27678a),
-                ),
+            Text(
+              'Create A New Account',
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.w600,
+                color: Color(0xff27678a),
               ),
             ),
             SizedBox(
               height: 16,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 32),
-              child: Text(
-                'Please, Fill In The Form To Continue.',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontFamily: 'Roboto',
-                  color: Color(0xff27678a),
-                ),
+            Text(
+              'Please, fill in the Form To Continue.',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w400,
+                color: Color(0xff27678a),
               ),
             ),
-            SizedBox(height: 30.0),
+            SizedBox(height: 40.0),
             buildForm(viewModel, context),
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Already have an account ? ',
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xFF9593a8),
-                  ),
+                    style: Styles.textStyle14.copyWith(color: Color(0xFF9593a8))
                 ),
                 GestureDetector(
                   onTap: () {
@@ -93,8 +84,8 @@ class _RegisterState extends State<Register> {
                   child: Text(
                     'Login',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Color(0xff3e97bd),
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -142,7 +133,7 @@ class _RegisterState extends State<Register> {
           TextFormBuilder(
             textInputType: TextInputType.phone,
             enabled: !viewModel.loading,
-            prefix: Ionicons.phone_portrait_outline,
+            prefix: Icons.phone_enabled_outlined,
             hintText: "phone number",
             textInputAction: TextInputAction.next,
             validateFunction: Validations.validatePhoneNumber,
@@ -183,30 +174,14 @@ class _RegisterState extends State<Register> {
             focusNode: viewModel.cPassFN,
           ),
           SizedBox(height: 40.0),
-          Container(
-            height: 45.0,
-            width: 180.0,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40.0),
-                  ),
-                ),
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    Theme.of(context).colorScheme.secondary),
-              ),
-              child: Text(
-                'Continue'.toUpperCase(),
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              onPressed: () => viewModel.register(context),
-            ),
+          CustomButton(
+            backgroundColor: Constants.kSecondColor,
+            textColor: Colors.white,
+            text: 'Continue',
+            width: 180,
+            onPressed: () => viewModel.register(context),
           ),
+
         ],
       ),
     );

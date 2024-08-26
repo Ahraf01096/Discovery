@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:discovery/utils/styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:discovery/components/stream_grid_wrapper.dart';
-import 'package:discovery/models/post.dart';
-import 'package:discovery/models/user.dart';
-import 'package:discovery/screens/edit_profile.dart';
+import 'package:discovery/features/feed/data/models/post.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
+import 'package:discovery/features/profile/presintation/views/widgets/edit_profile.dart';
 import 'package:discovery/utils/firebase.dart';
-import 'package:discovery/widgets/post_tiles.dart';
+import 'package:discovery/features/feed/presintation/views/widgets/post_tiles.dart';
 
 class Profile extends StatefulWidget {
   final profileId;
@@ -57,7 +58,7 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.grey.shade200,
-          toolbarHeight: 80,
+          toolbarHeight: 20,
           elevation: 0.0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -85,38 +86,35 @@ class _ProfileState extends State<Profile> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 0.0),
-                              child: user.photoUrl!.isEmpty
-                                  ? CircleAvatar(
-                                      radius: 60.0,
-                                      backgroundColor: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                      child: Center(
-                                        child: Text(
-                                          '${user.username![0].toUpperCase()}',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.w900,
-                                          ),
+                            user.photoUrl!.isEmpty
+                                ? CircleAvatar(
+                                    radius: 60.0,
+                                    backgroundColor: Theme.of(context)
+                                        .colorScheme
+                                        .secondary,
+                                    child: Center(
+                                      child: Text(
+                                        '${user.username![0].toUpperCase()}',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w900,
                                         ),
                                       ),
-                                    )
-                                  : Container(
-                                      width: 95.0,
-                                      height: 95.0,
-                                      decoration: new BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: new DecorationImage(
-                                          image: new CachedNetworkImageProvider(
-                                            '${user.photoUrl}',
-                                          ),
-                                          fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : Container(
+                                    width: 95.0,
+                                    height: 95.0,
+                                    decoration: new BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: new DecorationImage(
+                                        image: new CachedNetworkImageProvider(
+                                          '${user.photoUrl}',
                                         ),
-                                      )),
-                            ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )),
                             SizedBox(height: 8.0),
                             Visibility(
                               visible: false,
@@ -126,11 +124,7 @@ class _ProfileState extends State<Profile> {
                               child: Container(
                                 child: Text(
                                   user.username!,
-                                  style: TextStyle(
-                                      color: Color(0xff205065),
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w500,
-                                      fontFamily: 'Roboto'),
+                                  style: Styles.textStyle20
                                 ),
                               ),
                             ),

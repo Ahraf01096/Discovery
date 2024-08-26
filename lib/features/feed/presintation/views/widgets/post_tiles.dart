@@ -1,8 +1,8 @@
-import 'package:discovery/screens/comment.dart';
+import 'package:discovery/features/feed/presintation/views/widgets/comment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:discovery/models/post.dart';
-import 'package:discovery/widgets/cached_image.dart';
+import 'package:discovery/features/feed/data/models/post.dart';
+import 'package:discovery/features/feed/presintation/views/widgets/cached_image.dart';
 
 class PostTile extends StatefulWidget {
   final PostModel? post;

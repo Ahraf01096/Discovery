@@ -1,13 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:discovery/screens/searchuser.dart';
+import 'package:discovery/features/home/presintation/views/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ionicons/ionicons.dart';
-import 'package:discovery/models/post.dart';
-import 'package:discovery/utils/constants.dart';
+import 'package:discovery/features/feed/data/models/post.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/widgets/indicators.dart';
-import 'package:discovery/widgets/userpost.dart';
+import 'package:discovery/features/profile/presintation/views/widgets/userpost.dart';
+
+import '../../../../utils/constants.dart';
+import '../../../../utils/styles.dart';
+import '../../../home/presintation/views/widgets/custom_icon_button.dart';
 
 class Feeds extends StatefulWidget {
   @override
@@ -39,18 +41,31 @@ class _FeedsState extends State<Feeds> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          Constants.appName,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Roboto'
-          ),
-        ),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   leading:  CustomIconButton(
+      //     icon: Icon(
+      //       Icons.menu_outlined,
+      //       color: Constants.kSecondColor,
+      //     ),
+      //     onPressed: () => Scaffold.of(context).openDrawer(),
+      //   ),
+      //   actions: [
+      //     CustomIconButton(
+      //       icon: Icon(
+      //         Icons.menu_outlined,
+      //         color: Constants.kSecondColor,
+      //       ),
+      //       onPressed: () => Scaffold.of(context).openDrawer(),
+      //     ),
+      //
+      //   ],
+      //   automaticallyImplyLeading: false,
+      //   title: Text(
+      //     'Discovery',
+      //     style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w700),
+      //   ),
+      //   centerTitle: true,
+      // ),
       body: RefreshIndicator(
         color: Theme.of(context).colorScheme.secondary,
         onRefresh: () =>
@@ -61,8 +76,12 @@ class _FeedsState extends State<Feeds> with AutomaticKeepAliveClientMixin {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomAppBar(),
+              ),
               Container(
-                height: MediaQuery.of(context).size.height-10,
+                height: MediaQuery.of(context).size.height - 0,
                 child: FutureBuilder(
                   future: postRef
                       .orderBy('timestamp', descending: true)
@@ -83,7 +102,8 @@ class _FeedsState extends State<Feeds> with AutomaticKeepAliveClientMixin {
                             width: 329,
                             height: 250,
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16,vertical: 5),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 5),
                               child: UserPost(post: posts),
                             ),
                           );

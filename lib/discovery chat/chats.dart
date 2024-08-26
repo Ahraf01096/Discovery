@@ -2,7 +2,7 @@ import 'package:discovery/discovery%20chat/firebase_firestore_service.dart';
 import 'package:discovery/discovery%20chat/firebase_provider.dart';
 import 'package:discovery/discovery%20chat/user_item.dart';
 import 'package:discovery/discovery%20chat/user_search.dart';
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

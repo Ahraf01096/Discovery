@@ -1,4 +1,4 @@
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'chat_text_field.dart';

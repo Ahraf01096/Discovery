@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_storge_service.dart';
 import 'message.dart';
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 
 class FirebaseFirestoreService {
   static final firestore = FirebaseFirestore.instance;

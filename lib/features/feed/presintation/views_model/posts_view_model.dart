@@ -1,22 +1,20 @@
 import 'dart:io';
 
-import 'package:discovery/models/reel.dart';
-import 'package:discovery/services/reel_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:discovery/models/post.dart';
-import 'package:discovery/screens/mainscreen.dart';
+import 'package:discovery/features/feed/data/models/post.dart';
+import 'package:discovery/screens/navigation_screens.dart';
 import 'package:discovery/services/post_service.dart';
 import 'package:discovery/services/user_service.dart';
 import 'package:discovery/utils/firebase.dart';
 
-class ReelsViewModel extends ChangeNotifier {
+class PostsViewModel extends ChangeNotifier {
   //Services
   UserService userService = UserService();
-  ReelService reelService = ReelService();
+  PostService postService = PostService();
 
   //Keys
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -25,20 +23,23 @@ class ReelsViewModel extends ChangeNotifier {
   //Variables
   bool loading = false;
   String? username;
-  File? videoUrl ;
+  File? mediaUrl;
   final picker = ImagePicker();
   String? location;
   Position? position;
   Placemark? placemark;
   String? bio;
+  String? caption;
+  String? howToGetThere;
   String? description;
   String? email;
+  double? rating;
   String? commentData;
   String? ownerId;
   String? userId;
   String? type;
   File? userDp;
-  String? videoLink;
+  String? imgLink;
   bool edit = false;
   String? id;
 
@@ -51,11 +52,14 @@ class ReelsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  setReel(ReelModel reel) {
-    if (reel != null) {
-      description = reel.description;
-      videoLink = reel.videoUrl;
-      location = reel.location;
+  setPost(PostModel post) {
+    if (post != null) {
+      description = post.description;
+      caption = post.caption;
+      howToGetThere = post.howToGetThere;
+      imgLink = post.mediaUrl;
+      location = post.location;
+      rating = post.rating;
       edit = true;
       edit = false;
       notifyListeners();
@@ -70,13 +74,27 @@ class ReelsViewModel extends ChangeNotifier {
     username = val;
     notifyListeners();
   }
+  setrating(double val) {
+    print('SetName $val');
+    rating = val;
+    notifyListeners();
+  }
 
+  setCaption(String val) {
+    print('SetCaption $val');
+    caption = val;
+    notifyListeners();
+  }
   setDescription(String val) {
     print('SetDescription $val');
     description = val;
     notifyListeners();
   }
-
+  setHowToGetThere(String val) {
+    print('SetHowToGetThere $val');
+    howToGetThere = val;
+    notifyListeners();
+  }
   setLocation(String val) {
     print('SetCountry $val');
     location = val;
@@ -90,14 +108,14 @@ class ReelsViewModel extends ChangeNotifier {
   }
 
   //Functions
-  pickreel({bool camera = false, BuildContext? context}) async {
+  pickImage({bool camera = false, BuildContext? context}) async {
     loading = true;
     notifyListeners();
     try {
-      XFile? pickedFile = await picker.pickVideo(
+      XFile? pickedFile = await picker.pickImage(
         source: camera ? ImageSource.camera : ImageSource.gallery,
       );
-      videoUrl = File(pickedFile!.path);
+      mediaUrl = File(pickedFile!.path);
       loading = false;
       notifyListeners();
 
@@ -132,30 +150,75 @@ class ReelsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  uploadReels(BuildContext context) async {
+  uploadPosts(BuildContext context) async {
     try {
       loading = true;
       notifyListeners();
-      await reelService.uploadReel(videoUrl!, location!, description!);
+      await postService.uploadPost(mediaUrl!, location!, caption! ,description!,howToGetThere!,rating!);
       loading = false;
-      resetReel();
+      resetPost();
       notifyListeners();
     } catch (e) {
       print(e);
       loading = false;
-      resetReel();
+      resetPost();
       showInSnackBar('Uploaded successfully!', context);
       notifyListeners();
     }
   }
 
+  uploadProfilePicture(BuildContext context) async {
+    if (mediaUrl == null) {
+      showInSnackBar('Please select an image', context);
+    } else {
+      try {
+        loading = true;
+        notifyListeners();
+        await postService.uploadProfilePicture(
+            mediaUrl!, firebaseAuth.currentUser!);
+        loading = false;
+        Navigator.of(context)
+            .pushReplacement(CupertinoPageRoute(builder: (_) => TabScreen()));
+        notifyListeners();
+      } catch (e) {
+        print(e);
+        loading = false;
+        showInSnackBar('Uploaded successfully!', context);
+        notifyListeners();
+      }
+    }
+  }
+  uploadDefalutProfilePicture(BuildContext context) async {
+    if (mediaUrl == null) {
+     Image Photo = Image.asset('user_icon.png');
+     mediaUrl == Photo ;
+    } else {
+      try {
+        loading = true;
+        notifyListeners();
+        await postService.uploadProfilePicture(
+            mediaUrl!, firebaseAuth.currentUser!);
+        loading = false;
+        Navigator.of(context)
+            .pushReplacement(CupertinoPageRoute(builder: (_) => TabScreen()));
+        notifyListeners();
+      } catch (e) {
+        print(e);
+        loading = false;
+        showInSnackBar('Uploaded successfully!', context);
+        notifyListeners();
+      }
+    }
+  }
 
-
-  resetReel() {
-    videoUrl = null;
+  resetPost() {
+    mediaUrl = null;
+    caption = null;
+    howToGetThere = null;
     description = null;
     location = null;
     edit = false;
+    rating=null;
     notifyListeners();
   }
 

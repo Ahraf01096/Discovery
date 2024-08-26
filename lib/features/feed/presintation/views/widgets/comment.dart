@@ -1,19 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:discovery/pages/feeds.dart';
-import 'package:discovery/pages/profile.dart';
+import 'package:discovery/features/feed/presintation/views/feeds.dart';
+import 'package:discovery/features/profile/presintation/views/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:like_button/like_button.dart';
 import 'package:discovery/components/stream_comments_wrapper.dart';
-import 'package:discovery/models/comments.dart';
-import 'package:discovery/models/post.dart';
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/feed/data/comments.dart';
+import 'package:discovery/features/feed/data/models/post.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:discovery/services/post_service.dart';
 import 'package:discovery/utils/firebase.dart';
-import 'package:discovery/widgets/cached_image.dart';
+import 'package:discovery/features/feed/presintation/views/widgets/cached_image.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class Comments extends StatefulWidget {

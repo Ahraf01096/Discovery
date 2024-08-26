@@ -3,7 +3,7 @@ import 'package:discovery/activites/safari/elgona.dart';
 import 'package:discovery/activites/safari/hurgada.dart';
 import 'package:flutter/material.dart';
 
-import '../../screens/mainscreen.dart';
+import '../../screens/navigation_screens.dart';
 class safari extends StatefulWidget {
   const safari({Key? key}) : super(key: key);
 

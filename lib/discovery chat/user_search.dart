@@ -7,7 +7,7 @@ import 'custom_text_form_field.dart';
 import 'empty_widget.dart';
 import 'firebase_provider.dart';
 import 'user_item.dart';
-import '../models/user.dart';
+import '../features/profile/data/models/user.dart';
 
 
 

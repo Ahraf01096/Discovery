@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:discovery/models/post.dart';
+import 'package:discovery/features/feed/data/models/post.dart';
 import 'package:discovery/models/trip.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/widgets/indicators.dart';

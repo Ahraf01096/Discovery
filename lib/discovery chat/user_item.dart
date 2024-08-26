@@ -1,5 +1,5 @@
 import 'package:discovery/discovery%20chat/chat_screen.dart';
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 

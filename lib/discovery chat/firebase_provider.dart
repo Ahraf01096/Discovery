@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../models/user.dart';
+import '../features/profile/data/models/user.dart';
 import 'firebase_firestore_service.dart';
 import 'message.dart';
 

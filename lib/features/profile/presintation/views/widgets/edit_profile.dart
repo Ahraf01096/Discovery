@@ -4,13 +4,13 @@ import 'package:ionicons/ionicons.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:discovery/components/text_form_builder.dart';
-import 'package:discovery/models/user.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/utils/validation.dart';
-import 'package:discovery/view_models/profile/edit_profile_view_model.dart';
+import 'package:discovery/features/profile/presintation/views_model/edit_profile_view_model.dart';
 import 'package:discovery/widgets/indicators.dart';
 
-import 'mainscreen.dart';
+import '../../../../../screens/navigation_screens.dart';
 
 class EditProfile extends StatefulWidget {
   final UserModel? user;

@@ -32,7 +32,7 @@ import '../categories/museum/egypt.dart';
 import '../categories/museum/grand.dart';
 import '../categories/restaurant/pasta.dart';
 import '../categories/restaurant/thecrust.dart';
-import 'mainscreen.dart';
+import 'navigation_screens.dart';
 
 final List<Widget> buttons1 = <Widget>[
   SearchCategory(),

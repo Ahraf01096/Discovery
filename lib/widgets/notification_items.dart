@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:discovery/models/notification.dart';
-import 'package:discovery/pages/profile.dart';
+import 'package:discovery/features/profile/presintation/views/profile.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:discovery/widgets/view_notification_details.dart';
 import 'package:timeago/timeago.dart' as timeago;

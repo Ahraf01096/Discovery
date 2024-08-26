@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:discovery/models/user.dart';
-import 'package:discovery/screens/view_image.dart';
+import 'package:discovery/features/profile/data/models/user.dart';
+import 'package:discovery/features/feed/presintation/views/widgets/view_image.dart';
 import 'package:discovery/services/services.dart';
 import 'package:discovery/utils/firebase.dart';
 import 'package:uuid/uuid.dart';

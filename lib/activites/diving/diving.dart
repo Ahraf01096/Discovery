@@ -2,7 +2,7 @@ import 'package:discovery/activites/diving/hurgada.dart';
 import 'package:discovery/activites/diving/whiteisland.dart';
 import 'package:flutter/material.dart';
 
-import '../../screens/mainscreen.dart';
+import '../../screens/navigation_screens.dart';
 import 'marsaalam.dart';
 class diving extends StatefulWidget {
   const diving({Key? key}) : super(key: key);

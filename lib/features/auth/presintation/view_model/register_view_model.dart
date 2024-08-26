@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:discovery/services/auth_service.dart';
 
-import '../../presintation/views/widgets/verfiy.dart';
+import '../views/widgets/verfiy.dart';
 
 class RegisterViewModel extends ChangeNotifier {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();

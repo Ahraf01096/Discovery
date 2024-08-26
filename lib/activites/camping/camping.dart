@@ -5,7 +5,7 @@ import 'package:discovery/activites/camping/siwaoasis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../screens/mainscreen.dart';
+import '../../screens/navigation_screens.dart';
 class camping extends StatefulWidget {
   const camping({Key? key}) : super(key: key);
 

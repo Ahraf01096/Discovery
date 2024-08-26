@@ -2,7 +2,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:discovery/components/life_cycle_event_handler.dart';
 import 'package:discovery/discovery%20chat/firebase_provider.dart';
-import 'package:discovery/screens/mainscreen.dart';
+import 'package:discovery/screens/navigation_screens.dart';
 import 'package:discovery/services/user_service.dart';
 import 'package:discovery/utils/constants.dart';
 import 'package:discovery/utils/providers.dart';

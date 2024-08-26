@@ -1,5 +1,6 @@
 import 'package:discovery/features/auth/presintation/views/register.dart';
 import 'package:discovery/utils/constants.dart';
+import 'package:discovery/utils/styles.dart';
 import 'package:discovery/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:discovery/components/password_text_field.dart';
 import 'package:discovery/components/text_form_builder.dart';
 import 'package:discovery/utils/validation.dart';
-import 'package:discovery/features/auth/data/models/login_view_model.dart';
+import 'package:discovery/features/auth/presintation/view_model/login_view_model.dart';
 import 'package:discovery/widgets/indicators.dart';
 
 class Login extends StatefulWidget {
@@ -53,7 +54,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            SizedBox(height: 25.0),
+            SizedBox(height: 40.0),
             buildForm(context, viewModel),
             SizedBox(height: 10.0),
             Row(
@@ -61,9 +62,7 @@ class _LoginState extends State<Login> {
               children: [
                 Text(
                   'Don\'t have an account?',
-                  style: TextStyle(
-                    color: Color(0xFF9593a8),
-                  ),
+                  style: Styles.textStyle14.copyWith(color: Color(0xFF9593a8))
                 ),
                 SizedBox(width: 5.0),
                 GestureDetector(
@@ -142,7 +141,7 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          SizedBox(height: 10.0),
+          SizedBox(height: 40.0),
           CustomButton(
             backgroundColor: Constants.kSecondColor,
             textColor: Colors.white,

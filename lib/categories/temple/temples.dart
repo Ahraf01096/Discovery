@@ -1,17 +1,12 @@
-import 'package:discovery/categories/beaches/Beaches.dart';
-import 'package:discovery/categories/churche/churches.dart';
-import 'package:discovery/categories/desert/desert.dart';
 import 'package:discovery/categories/temple/abosimbel.dart';
 import 'package:discovery/categories/temple/hatshepsut.dart';
 import 'package:discovery/categories/temple/karnak.dart';
 import 'package:discovery/categories/temple/luxor.dart';
-import 'package:discovery/screens/mainscreen.dart';
-import 'package:discovery/categories/mosque/mosque.dart';
-import 'package:discovery/categories/mountains/mountains.dart';
-import 'package:discovery/categories/museum/museum.dart';
-import 'package:discovery/categories/restaurant/restaurants.dart';
+import 'package:discovery/screens/navigation_screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/home/presintation/views/widgets/categories_widget.dart';
 
 
 class temples extends StatefulWidget {
@@ -26,46 +21,7 @@ class _templesState extends State<temples> {
     luxor(),
     abosimbel(),
   ];
-  final List<Widget> buttons1 = <Widget>[
-    mountains(),
-    beaches(),
-    desert(),
-    mosque(),
-    churches(),
-    museum(),
-    temples(),
-    restaurants(),
-  ];
-  final List<Color> colors = <Color>[
-    Color.fromARGB(100, 255, 255, 255),
-    Color.fromARGB(100, 255, 255, 255),
-    Color.fromARGB(100, 255, 255, 255),
-    Color.fromARGB(100, 255, 255, 255),
-    Color.fromARGB(100, 255, 255, 255),
-    Color.fromARGB(100, 255, 255, 255),
-    Color.fromARGB(100, 241, 251, 255),
-    Color.fromARGB(100, 255, 255, 255),
-  ];
-  final List<String> namess = <String>[
-    'Mountains',
-    'Beaches',
-    'Desert',
-    'Mosques',
-    'Churches',
-    'Museums',
-    'Temple',
-    'Restaurants',
-  ];
-  final List<String> imagess = <String>[
-    'images/mountain.png',
-    'images/beach_icon.png',
-    'images/desert_icon.png',
-    'images/mosque_icon.png',
-    'images/churches.png',
-    'images/museum.png',
-    'images/temple.png',
-    'images/resturant.png',
-  ];
+
   final List<String> names = <String>[
     'Luxor',
     'Luxor',
@@ -140,66 +96,8 @@ class _templesState extends State<temples> {
           padding: EdgeInsets.only(top: 5, left: 32, right: 32),
           child: Column(
             children: [
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: SizedBox(
-                      height: 40.5,
-                      child: new ListView.separated(
-                        itemCount: namess.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: colors[index],
-                            ),
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(1.0),
-                                    child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context)=> buttons1[index])
-                                          );
-                                        },
-                                        child: Image.asset(imagess[index])),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context)=> buttons1[index])
-                                      );
-                                    },
-                                    child: Text(
-                                      namess[index],
-                                      style: TextStyle(
-                                        color: Color(0xFF205065),
-                                        fontSize: 11.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: 10,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              CategoriesWidget(),
+
               SizedBox(
                 height: 20,
               ),
